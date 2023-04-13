@@ -5,6 +5,7 @@ import { Pokemon } from './entities/pokemon.entity';
 import { CreatePokemonDto } from './dtos/create-pokemon.dto';
 import { UpdatePokemonDto } from './dtos/update-pokemon.dto';
 import { QueryPaginationDto } from 'src/common/dtos/query-pagination.dto';
+import { AppConfig } from 'src/config/app.config';
 
 @Injectable()
 export class PokemonService {
@@ -13,8 +14,8 @@ export class PokemonService {
     private readonly pokemonModel: Model<Pokemon>
   ) {}
 
-  private limit = 1;
-  private offset = 10;
+  private readonly defaultLimit = AppConfig().defaultLimit;
+  private readonly defaultOffset = AppConfig().defaultOffset;
 
   async create(createPokemonDto: CreatePokemonDto) {
     try {
@@ -26,18 +27,18 @@ export class PokemonService {
   }
 
   async findAll(queryPaginationDto: QueryPaginationDto) {
-    if (queryPaginationDto.limit) this.limit = queryPaginationDto.limit;
-    if (queryPaginationDto.offset) this.offset = queryPaginationDto.offset;
+    const limit = queryPaginationDto.limit || this.defaultLimit;
+    const offset = queryPaginationDto.offset || this.defaultOffset;
     try {
       const count = await this.pokemonModel.count();
       const pokemons = await this.pokemonModel
         .find()
         .sort({ no: 1 })
-        .skip((this.limit - 1) * this.offset)
-        .limit(this.offset);
+        .skip((limit - 1) * offset)
+        .limit(offset);
       return {
-        page: this.limit,
-        registers: this.offset,
+        page: limit,
+        registers: pokemons.length,
         total: count,
         data: pokemons
       };

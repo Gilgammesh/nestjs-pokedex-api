@@ -4,13 +4,7 @@
   <img src="https://nestjs.com/img/logo-small.svg" width="160" alt="Nest Logo" />
 </div>
 
----
-
 ## Requisitos Previos
-
----
-
-<br />
 
 > [Nodejs 18.15.0](https://nodejs.org/download/release/v18.15.0/)
 
@@ -24,47 +18,25 @@
 
 > [MongoDB Compass](https://www.mongodb.com/es/products/compass/)
 
-<br />
-
----
-
 ## Ejecutar en Desarrollo
-
----
-
-<br />
 
 ### Paso 1: Clonar el repositorio
 
-<br />
-
 Ingresamos a <https://github.com/Gilgammesh/nestjs-pokedex-api>
 
-<br />
-
 ### Paso 2: Instalar Nest Cli de forma global
-
-<br />
 
 ```sh
 npm install @nestjs/cli -g
 ```
 
-<br />
-
 ### Paso 3: Instalar las dependencias
-
-<br />
 
 ```sh
 yarn install
 ```
 
-<br />
-
 ### Paso 4: Levantar la base de datos
-
-<br />
 
 Tener `Docker Desktop` abierto y ejecutar
 
@@ -72,14 +44,24 @@ Tener `Docker Desktop` abierto y ejecutar
 docker-compose -f .\docker-compose.yaml up --build -d
 ```
 
-<br />
+### Paso 5: Clonar plantilla de variables de entorno
 
-### Paso 5: Poblar la base de datos con la semilla
+Copiar el archivo `.env.template` y renombrar la copia a `.env`
 
-<br />
+### Paso 6: Llenar las variables de entorno
+
+Ingresar los valores de las variables de entorno definidas en el archivo `.env`
+
+### Paso 7: Poblar la base de datos con la semilla
 
 Ejecutar la petición del tipo `GET`
 
 <http://localhost:4000/api/seed>
 
-<br />
+### Paso 8: Ejecutar la aplicación
+
+En desarrollo
+
+```sh
+yarn start:dev
+```
