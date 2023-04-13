@@ -18,7 +18,7 @@ import { AppValidationSchema } from './config/app.validation';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'public')
     }),
-    MongooseModule.forRoot(AppConfig().mongoDbConnectionString),
+    MongooseModule.forRoot(process.env['MONGO_DB_CONNECTION_STRING']),
     PokemonModule,
     CommonModule,
     SeedModule
