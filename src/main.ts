@@ -13,9 +13,5 @@ async function bootstrap() {
     })
   );
   await app.listen(process.env.PORT);
-  console.log('PORT =>', process.env.PORT);
-  console.log('PORT =>', process.env.appPort);
-  console.log('MONGO_DB_CONNECTION_STRING =>', process.env.MONGO_DB_CONNECTION_STRING);
-  console.log('MONGO_DB_CONNECTION_STRING =>', process.env.mongoDbConnectionString);
 }
 bootstrap();

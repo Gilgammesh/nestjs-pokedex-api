@@ -39,3 +39,4 @@ mongo-data
 
 # Environment Variables
 .env
+.env.prod

@@ -65,3 +65,19 @@ En desarrollo
 ```sh
 yarn start:dev
 ```
+
+## Ejecutar en Producción (Docker)
+
+### Paso 1: Crear variables de entorno de producción
+
+Copiar el archivo `.env` y renombrar la copia a `.env.prod`
+
+Ingresar los valores de las variables de entorno para producción
+
+### Paso : Construir las imágenes del servidor y base de datos
+
+Tener `Docker Desktop` abierto y ejecutar
+
+```sh
+docker-compose -f .\docker-compose.prod.yaml --env-file .env.prod up --build -d
+```
